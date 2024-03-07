@@ -9,15 +9,15 @@
     <body>
         <div class="container">
             <h1>Task Tracker</h1>
-            <form id="taskForm">
+            <form id="taskForm" method="post">
                 <!-- Task Form Inputs-->
-                <label id="taskName">Task Name</label>
-                <input type="taskName" placeholder="Enter your Task name here!">
-                <label id="taskDescription">Task Description</label>
-                <textarea name="Task Description" rows="3" cols="50"></textarea>
-                <label id="taskDeadline">Task Deadline</label>
-                <input type="taskDeadline">
-                <button type="submit">Add Task</button>
+                <label for="taskName">Task Name</label>
+                <input type="text" name="taskName" id="taskName">
+                <label for="taskDescription">Task Description</label>
+                <textarea id="taskDescription" name="Task Description" rows="3" cols="50"></textarea>
+                <label for="taskDeadline">Task Deadline</label>
+                <input type="text" name="taskDeadline" id="taskDeadline">
+                <button name="taskName" type="button" onclick="References()">Add</button>
             </form>
             <table id="taskTable">
                 <!-- Task table content-->
