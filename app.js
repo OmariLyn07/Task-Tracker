@@ -7,10 +7,11 @@
 
 //Section 2: App state Variables
 let tasks = [];
+let completes = [];
 
 //Section 3.3: Cached Element References
-const taskForm = null;
-const taskTable = null;
+const taskForm = document.getElementById("taskForm");
+const taskTable = document.getElementById('taskTable');
 
 //Section 3.4: Functions and Event Listeners
 function handleSubmission(event) {
@@ -20,7 +21,7 @@ function handleSubmission(event) {
     let taskDescription = document.getElementById('taskDescription').value;
     let taskDeadline = document.getElementById('taskDeadline').value;
     //TODO: Validate input fields
-    if (taskName === null || taskDeadline === null) {
+    if (taskName === '' || taskDeadline === '') {
         alert('Task name and deadline are required!');
     }
     //TODO: Update the tasks array
@@ -37,7 +38,7 @@ function render() {
         <td>${task.description}</td>
         <td>${task.deadline}</td>
         <td><button onclick="markTaskComplete(this)">Complete</button></td>
-        <td><button onclick="removeTask(this)">Remove</button></td>
+        <td><button type="button" value="delete" onclick="removeTask(this)">Remove</button></td>
     </tr>`).join('');
 }
 
@@ -46,6 +47,25 @@ function init() {
     taskTable.innerHTML = ''; //Clear the table
     tasks = []; //Reset the tasks array
     render(); //Call the render function
+}
+function markTaskComplete(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("taskTable").deleteRow(i);
+    completes.push({name: tasks[i].name, description: tasks[i].description, deadline: tasks[i].deadline});
+    document.getElementById("taskDone").innerHTML = completes.map(complete => `
+    <tr>
+        <td>${complete.name}</td>
+        <td>${complete.description}</td>
+        <td>${complete.deadline}</td>
+    </tr>`).join('');
+    tasks.splice(i, 1);
+}
+function removeTask(r){
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("taskTable").deleteRow(i);
+    tasks.splice(i, 1);
+    
+    
 }
 //Event Listener for form submission
 taskForm.addEventListener('submit', handleSubmission);

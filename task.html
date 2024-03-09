@@ -11,17 +11,21 @@
             <h1>Task Tracker</h1>
             <form id="taskForm" method="post">
                 <!-- Task Form Inputs-->
-                <label for="taskName">Task Name</label>
+                <label for="taskName">Task Name: </label>
                 <input type="text" name="taskName" id="taskName">
-                <label for="taskDescription">Task Description</label>
-                <textarea id="taskDescription" name="Task Description" rows="3" cols="50"></textarea>
-                <label for="taskDeadline">Task Deadline</label>
+                <label for="taskDeadline">Task Deadline:</label>
                 <input type="text" name="taskDeadline" id="taskDeadline">
-                <button name="taskName" type="button" onclick="References()">Add</button>
+                <br>
+                <label for="taskDescription">Task Description:</label>
+                <textarea id="taskDescription" name="Task Description" rows="2" cols="50"></textarea>
+                <button name="taskName" type="submit">Add</button>
             </form>
+            <h1 class="table"><u>Tasks</u></h1>
             <table id="taskTable">
                 <!-- Task table content-->
-                <!-- Shows tasks currently in the list-->
+            </table>
+            <h1 class="table"><u>Completed Tasks</u></h1>
+            <table id="taskDone">
             </table>
         </div>
         <script src="app.js"></script>
